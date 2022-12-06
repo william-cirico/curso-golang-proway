@@ -22,7 +22,7 @@ Em Go conseguimos aplicar os princípios da OOP utilizando Structs.
   - matrícula,
   - nome
   - 2 notas de prova
-  - 1 nota de trabalho
+  - 1 nota de trabalho  
 Essa classe deve ter 2 métodos:
   - media: calcula a média final do aluno (cada prova tem peso 3 e o trabalho tem peso 2)
   - final: calcula quanto o aluno precisa para a prova final (retorna zero se ele não for para a final)
