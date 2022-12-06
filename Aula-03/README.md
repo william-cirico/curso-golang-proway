@@ -23,4 +23,8 @@ Channels são a forma de conseguirmos trafegar valores entre goroutines.
 
 1) Crie uma função maioresArquivos(path string) que recebe o caminho para um diretório no sistema operacional e mostre na tela o nome e o tamanho dos 5 maiores arquivos daquela pasta.
 
-2) Crie uma função que multiplique um vetor de números inteiros e uma função que divida um vetor de números inteiros. Faça as duas funções rodarem paralelamente através da utilização de gorountines e ao final mostre a soma dos resultados das funções.
+2) Crie uma função moveFiles(oldPath string, newPath string) que move os arquivos da pasta original
+para a nova pasta.
+
+3) Crie uma função que multiplique um vetor de números inteiros e uma função que divida um vetor de números inteiros. Faça as duas funções rodarem paralelamente através da utilização de gorountines e ao final mostre a soma dos resultados das funções.
+
