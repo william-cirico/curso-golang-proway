@@ -1,8 +1,6 @@
 package usecases
 
 import (
-	"errors"
-
 	"github.com/william-cirico/rest-api-golang/models"
 	"github.com/william-cirico/rest-api-golang/repositories"
 	"gorm.io/gorm"
@@ -28,23 +26,31 @@ func NewUserUseCase(db *gorm.DB) UserUseCase {
 }
 
 func (uc *userUseCase) GetUsers() (models.Users, error) {
-	var users []models.User
+	users, err := uc.r.Find()
 
-	return users, errors.New("not implemented yet")
+	return users, err
 }
 
 func (uc *userUseCase) GetUserById(ID uint) (models.User, error) {
-	return models.User{}, errors.New("not implemented yet")
+	user, err := uc.r.FindById(ID)
+
+	return user, err
 }
 
 func (uc *userUseCase) CreateUser(user models.User) (models.User, error) {
-	return models.User{}, errors.New("not implemented yet")
+	user, err := uc.r.Save(&user)
+
+	return user, err
 }
 
 func (uc *userUseCase) UpdateUser(user models.User) (models.User, error) {
-	return models.User{}, errors.New("not implemented yet")
+	user, err := uc.r.Save(&user)
+
+	return user, err
 }
 
 func (uc *userUseCase) DeleteUser(ID uint) error {
-	return errors.New("not implemented yet")
+	err := uc.r.Delete(ID)
+
+	return err
 }

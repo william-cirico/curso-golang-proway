@@ -19,17 +19,16 @@ func NewGormDBConnection() *gorm.DB {
 	dbPort := os.Getenv("DB_PORT")
 
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=true&loc=Local", dbUser, dbPass, dbHost, dbPort, dbName)
-
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
 		Logger: logger.Default.LogMode(logger.Silent),
 	})
 
-	// Realizando as migrações (Criando as tabelas)
-	db.AutoMigrate(models.User{})
-
 	if err != nil {
 		log.Fatal("failed to connect to database")
 	}
+
+	// Realizando as migrações (Criando as tabelas)
+	db.AutoMigrate(models.User{})
 
 	return db
 }

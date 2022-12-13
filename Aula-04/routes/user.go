@@ -14,8 +14,9 @@ func RegisterUserRoutes(router *mux.Router, db *gorm.DB) {
 	userRouter := router.PathPrefix("/users").Subrouter()
 	userHandler := handlers.NewUserHandler(db)
 
-	userRouter.HandleFunc("/", userHandler.GetUsersHandler).Methods("GET")
-	userRouter.HandleFunc("/{id:[0-9]+}", userHandler.GetUserByIdHandler).Methods("GET")
-	userRouter.HandleFunc("/", userHandler.CreateUserHandler).Methods("POST")
-	userRouter.HandleFunc("/{id:[0-9]+}", userHandler.UpdateUserHandler).Methods("PUT")
+	userRouter.Handle("", handlers.RootHandler(userHandler.GetUsersHandler)).Methods("GET")
+	userRouter.Handle("/{id:[0-9]+}", handlers.RootHandler(userHandler.GetUserByIdHandler)).Methods("GET")
+	userRouter.Handle("", handlers.RootHandler(userHandler.CreateUserHandler)).Methods("POST")
+	userRouter.Handle("/{id:[0-9]+}", handlers.RootHandler(userHandler.UpdateUserHandler)).Methods("PUT")
+	userRouter.Handle("/{id:[0-9]+}", handlers.RootHandler(userHandler.DeleteUserHandler)).Methods("DELETE")
 }

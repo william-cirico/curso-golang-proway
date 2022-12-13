@@ -1,6 +1,7 @@
 package infrastructure
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -36,5 +37,6 @@ func (mr *muxRouter) Start() {
 		Addr:    "127.0.0.1:" + os.Getenv("PORT"),
 	}
 
+	fmt.Println("Server listening on port: " + os.Getenv("PORT"))
 	log.Fatal(srv.ListenAndServe())
 }
